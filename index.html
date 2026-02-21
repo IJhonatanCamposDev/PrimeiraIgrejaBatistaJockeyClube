@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PIB em Jockey Club | Igreja Batista em Niterói</title>
+
+  <meta name="description" content="Site oficial da Primeira Igreja Batista em Jockey Club. Horários de culto, transmissões ao vivo, localização e redes sociais.">
+
+  <!-- FAVICONS -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="header-container">
+    <h1 class="nome-igreja">PIB em Jockey Club</h1>
+
+    <button id="menu-btn" aria-label="Abrir menu">☰</button>
+
+    <ul id="menu">
+      <li><a href="#cultos">Cultos</a></li>
+      <li><a href="#ao-vivo">Ao Vivo</a></li>
+      <li><a href="#localizacao">Localização</a></li>
+      <li><a href="#redes">Redes Sociais</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-video">
+  <div id="player-anuncios"></div>
+  <div class="hero-overlay"></div>
+</section>
+
+<main>
+
+  <!-- CULTOS -->
+  <section id="cultos" class="section bg fade-section">
+    <h2>Horários de Culto</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Quinta-feira</h3>
+        <p>Culto de Estudo da Palavra</p>
+        <strong>19h30</strong>
+      </div>
+
+      <div class="card">
+        <h3>Domingo</h3>
+        <p>Manhã – 08h30</p>
+        <p>Escola Bíblica – 10h</p>
+        <p>Noite – 18h30</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AO VIVO -->
+  <section id="ao-vivo" class="section bg fade-section">
+    <h2>Transmissão ao Vivo</h2>
+    <p>Acompanhe nossos cultos pelo YouTube</p>
+
+    <!-- CONTADOR -->
+    <div class="contador">
+      <h3>Próximo culto começa em</h3>
+      <div id="countdown">Carregando...</div>
+    </div>
+
+    <!-- SELO -->
+    <div class="live-badge">
+      🔴 AO VIVO AGORA
+    </div>
+
+    <!-- BOTÃO ASSISTIR -->
+    <div class="live-buttons">
+      <a
+        href="https://www.youtube.com/channel/UCpU5DsD1ff8WiydNwEqy-HA/live"
+        target="_blank"
+        class="btn-live">
+        ▶ Assistir agora
+      </a>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section id="localizacao" class="section bg fade-section">
+    <h2>Onde Estamos</h2>
+
+    <div class="mapa-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3676.8257546819436!2d-43.000297488746014!3d-22.845935235613442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9990448f781761%3A0x466249b759cfc66d!2sPrimeira%20Igreja%20Batista%20em%20Jockey%20Club!5e0!3m2!1spt-BR!2sbr!4v1769555480604!5m2!1spt-BR!2sbr"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <a
+      class="btn-mapa"
+      target="_blank"
+      href="https://www.google.com/maps/dir/?api=1&destination=Primeira+Igreja+Batista+em+Jockey+Club">
+      Como chegar
+    </a>
+  </section>
+
+</main>
+
+<!-- REDES SOCIAIS -->
+<section id="redes" class="section bg fade-section">
+  <h2>Redes Sociais</h2>
+
+  <div class="icones">
+    <a href="https://www.instagram.com/pibemjc" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram PIB em Jockey Club">
+    </a>
+    <a href="https://www.facebook.com/pibemJC" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook PIB em Jockey Club">
+    </a>
+    <a href="https://www.youtube.com/channel/UCpU5DsD1ff8WiydNwEqy-HA" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube PIB em Jockey Club">
+    </a>
+  </div>
+</section>
+
+<section id="devocional" class="section fade-section">
+  <h2>Devocional com IA</h2>
+  <p>Digite um tema e receba um devocional completo</p>
+
+  <div class="devocional-box">
+    <input 
+      type="text" 
+      id="temaDevocional" 
+      placeholder="Ex: Fé, Perdão, Família..."
+    />
+
+    <button id="gerarDevocional">
+      Gerar Devocional
+    </button>
+  </div>
+
+  <div id="resultadoDevocional" class="resultado-devocional"></div>
+</section>
+
+<footer>
+  <p>© 2026 PIB em Jockey Club</p>
+</footer>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="script.js"></script>
+</body>
+</html>
