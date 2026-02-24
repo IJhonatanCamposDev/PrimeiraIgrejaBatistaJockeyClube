@@ -2,7 +2,7 @@ exports.handler = async (event) => {
 
   const { tema } = JSON.parse(event.body);
 
-  const fetch = require("node-fetch");
+  
 
   const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
