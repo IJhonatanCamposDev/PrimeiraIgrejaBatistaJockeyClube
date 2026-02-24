@@ -1,8 +1,20 @@
 exports.handler = async (event) => {
 
-  const { tema } = JSON.parse(event.body);
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 200,
+      body: "Função ativa. Use POST para gerar devocional."
+    };
+  }
 
-  
+  const { tema } = JSON.parse(event.body || "{}");
+
+  if (!tema) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ erro: "Tema não enviado." })
+    };
+  }
 
   const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
