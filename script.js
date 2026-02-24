@@ -26,18 +26,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   cards.forEach(card => observer.observe(card));
+
   /* ================= ANIMAÇÃO SEÇÕES ================= */
-const sections = document.querySelectorAll(".fade-section");
+  const sections = document.querySelectorAll(".fade-section");
 
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.2 });
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.2 });
 
-sections.forEach(section => sectionObserver.observe(section));
+  sections.forEach(section => sectionObserver.observe(section));
 
   /* ================= CONTADOR ================= */
   const countdownEl = document.getElementById("countdown");
@@ -89,10 +90,7 @@ sections.forEach(section => sectionObserver.observe(section));
     const dia = agora.getDay();
     const minutos = agora.getHours() * 60 + agora.getMinutes();
 
-    // Quinta: 19:30–21:00
     if (dia === 4 && minutos >= 1170 && minutos <= 1260) return true;
-
-    // Domingo: 18:30–20:30
     if (dia === 0 && minutos >= 1110 && minutos <= 1230) return true;
 
     return false;
@@ -106,12 +104,33 @@ sections.forEach(section => sectionObserver.observe(section));
 
   verificarAoVivo();
   setInterval(verificarAoVivo, 60000);
+
+  /* ================= DEVOCIONAL ================= */
+  const btnDevocional = document.getElementById("gerarDevocional");
+  const resultadoDevocional = document.getElementById("resultadoDevocional");
+
+  if (btnDevocional) {
+    btnDevocional.addEventListener("click", async () => {
+      resultadoDevocional.innerHTML = "Gerando devocional... 🙏";
+
+      try {
+        const resposta = await fetch("/.netlify/functions/devocional");
+        const dados = await resposta.json();
+
+        resultadoDevocional.innerHTML = `
+          <h3>${dados.versiculo}</h3>
+          <p>${dados.mensagem}</p>
+        `;
+      } catch (erro) {
+        resultadoDevocional.innerHTML = "Erro ao gerar devocional.";
+        console.error(erro);
+      }
+    });
+  }
+
 });
 
-
 /* ================= YOUTUBE HERO PLAYER ================= */
-
-
 
 let heroPlayer;
 
